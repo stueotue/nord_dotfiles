@@ -1,0 +1,136 @@
+;
+; Start of the Top Bar
+;
+
+(defwidget topbar []
+  (box :class "top-bar" :orientation "h" :space-evenly false
+    (box :orientation "v" :space-evenly false :class "profile-widget"
+      (box :style "margin: 1.5em 0.5em 0.5em 1.5em;"
+        (image :path "/home/valkyric/.config/eww/round_x_prof_nord.png" :image-width 150))
+      (box :style "font-family: 'JetBrainsMono', monospace; font-size: 15px; font-weight: bolder; color: #81a1c1; padding:  0.5em 0.5em 0.5em 1.5em;"
+        (box "valkyric"))
+    )
+    (box :orientation "v" :class "power-controls"
+      (button :onclick "poweroff"
+          :class "power-button" (label :text ""))
+      (button :onclick "reboot"
+          :class "power-button" (label :text ""))
+      (button :onclick "bash /home/valkyric/.config/eww/scripts/logout.sh"
+          :class "power-button" (label :text ""))
+      (button :onclick "eww active-windows | grep -q power-popup && eww close power-popup || eww open power-popup"
+        :class "power-button" (label :text ""))
+    )
+  )
+)
+
+;
+; End of the Top Bar
+;
+; Start of the 2 Horizontal widget contain 8 button for control idk why
+;
+
+(defvar is_recording false)
+(defvar hyprsunset_on false)
+
+(defpoll storage-usage :interval "10s" "bash ~/.config/eww/scripts/poll_hd.sh")
+(defpoll gpu-ram-usage :interval "10s" "bash ~/.config/eww/scripts/poll_gpu_ram.sh")
+(defwidget groupBar []
+  (box :orientation "h" :class "group-bar" 
+    (box :orientation "v" :class "group-column"  :space-evenly false
+      (box :orientation "h"
+        (button :onclick "pactl set-sink-mute @DEFAULT_SINK@ toggle" :class "group-button" (label :text ""))
+        (button :onclick "pactl set-source-mute @DEFAULT_SOURCE@ toggle" :class "group-button" (label :text ""))
+      )
+      (box :orientation "h"
+        (button :onclick "bash /home/valkyric/.config/eww/scripts/toggle_record.sh" :class {is_recording ? "recording" : "group-button"} (label :text ""))
+        (button :onclick "if pgrep -x hyprsunset > /dev/null; then pkill -x hyprsunset; eww update hyprsunset_on=false; else nohup hyprsunset >/dev/null 2>&1 & eww update hyprsunset_on=true; fi" 
+          :class {hyprsunset_on ? "night_mode" : "group-button"} (label :text "󱐟"))
+      )
+      (box :style " padding-top: 1em;"
+        (image :path "/home/valkyric/.config/eww/harddisk-shadow.png" :image-width 110))
+      (box :class "group-text" (label :text storage-usage))
+    )
+    (box :orientation "v" :class "group-column"  :space-evenly false
+      (box :orientation "h"
+        (button :onclick "bash /home/valkyric/.config/eww/scripts/callapp.sh discord" :class "group-button" (label :text "󰙯"))
+        (button :onclick "bash /home/valkyric/.config/eww/scripts/callapp.sh superProductivity" :class "group-button" (label :text "󰔠"))
+      )
+      (box :orientation "h"
+        (button :onclick "bash /home/valkyric/.config/eww/scripts/callapp.sh obsidian" :class "group-button" (label :text "󰎚"))
+        (button :onclick "env XDG_CURRENT_DESKTOP=Hyprland firefox" :class "group-button" (label :text ""))
+      )
+      (box :style " padding-top: 1em;"
+        (image :path "/home/valkyric/.config/eww/gpu-fill.png" :image-width 110))
+      (box :class "group-text" (label :text gpu-ram-usage))
+    )
+  )
+)
+
+;
+; End of the 2 Horizontal widget contain 8 button for control idk why
+;
+
+
+
+
+
+
+;
+; Start of the Power Menu to you know power perf balance save 
+;
+
+(defwidget power-profile []
+  (box :orientation "vertical" :class "perf-control"
+    (button :onclick "powerprofilesctl set performance && eww close power-popup" :class "power-mode-btn" :style "color: red;"
+      (label :text "󰾆"))
+    (button :onclick "powerprofilesctl set balanced && eww close power-popup" :class "power-mode-btn"  :style "color: lightblue;"
+      (label :text ""))
+    (button :onclick "powerprofilesctl set power-saver && eww close power-popup" :class "power-mode-btn"  :style "color: lime;"
+      (label :text ""))
+  )
+)
+
+;
+; End of the Power Menu to you know power perf balance save 
+;
+; WINDOW START!
+;
+; Power-Menyu
+;
+
+(defwindow power-popup
+  :monitor 0
+  :geometry (geometry :x 300 :y 250 :width 100)
+  :stacking "overlay"
+  :anchor "center"
+  :exclusive false
+  :focusable false
+  (box :orientation "h" :class "todo"
+    (power-profile)
+  )
+)
+
+;
+;
+; Dashboard Dropdown Lovers
+; 
+;
+
+(defwindow dropdown-overlay
+  :monitor 0
+  :geometry (geometry :x "10px" :y "10px")
+  :stacking "overlay"
+  :anchor "top right"
+  (box
+    :class "dropdown-overlay"
+    :orientation "vertical"
+    (topbar)
+    (groupBar)
+  )
+)
+
+;
+;
+; Dashboard Dropdown Lovers
+; 
+;

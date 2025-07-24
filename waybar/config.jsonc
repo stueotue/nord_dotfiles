@@ -1,0 +1,111 @@
+{
+  "layer": "top",
+  "position": "top",
+  "margin-top": 5,
+  "margin-left": 5,
+  "margin-right": 5,
+  "margin-bottom": 0,
+  "modules-left": ["custom/arch", "hyprland/workspaces", "custom/window"],
+  "modules-center": ["mpris", "custom/cava"],
+  "modules-right": ["pulseaudio", "network", "temperature", "custom/gpu", "custom/ram", "clock", "custom/notifications"],
+
+
+
+
+  "custom/arch": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "eww active-windows | grep -q dropdown-overlay && eww close dropdown-overlay || eww open dropdown-overlay",
+    "tooltip": false
+  },
+  "hyprland/workspaces": {
+    "all-outputs": false,
+    "format": "{icon}",
+    "format-icons": {
+        "active-only": false,
+        "urgent": "",
+        "active": "",
+        "default": ""
+    },
+    "on-click":"activate"
+  },
+  "custom/window": {
+    "exec": "~/.config/waybar/scripts/window_icon.sh",
+    "return-type": "text",
+    "interval": 1
+  },
+
+  "mpris": {
+    "format": "{player_icon} {status_icon} {artist} - {title}",
+    "format-paused": " {artist} - {title}",
+    "format-stopped": "",
+    "max-length": 40,
+    "ellipsis": "…",
+    "player-icons": {
+      "default": "🎵"
+    },
+    "status-icons": {
+      "playing": "",
+      "paused": "",
+      "stopped": ""
+    }
+  },
+
+  "custom/cava": {
+    "exec": "~/.config/waybar/scripts/cava_bar.sh",
+    "interval": 0.1,
+    "return-type": "text"
+  },
+
+  "pulseaudio": {
+        "scroll-step": 2,
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": " ",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+        },
+        "on-click": "foot --app-id pulsemixer pulsemixer"
+    },
+
+  "temperature": {
+    "hwmon-path": "/sys/class/hwmon/hwmon0/temp1_input",  // You may need to find correct hwmon path
+    "critical-threshold": 75,
+    "format": "󰻠 {temperatureC}°C",
+    "tooltip": true,
+    "tooltip-format": "CPU Temperature {temperatureC}°C"
+  },
+
+  "custom/gpu": {
+    "exec": "nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits | awk '{print \"󰍛 \"$1\"°C\"}'",
+    "interval": 10,
+    "tooltip": true,
+    "tooltip-format": "GPU Temperature"
+  },
+
+  "custom/ram": {
+    "exec": "free -h | awk '/Mem:/ {print \"󰑭 \"$3 \"/\" $2}'",
+    "interval": 5
+  },
+
+  "clock": {
+    "format": "📅 {:%a %b %d %H:%M:%S}",
+    "interval": 1
+  },
+
+  "custom/notifications": {
+    "exec": "swaync-client -swb", // -s = show count, -w = do not show when 0, -b = short format
+    "return-type": "json",
+    "interval": 2,
+    "format": "🔔 {}",
+    "on-click": "swaync-client -t"
+  }
+}

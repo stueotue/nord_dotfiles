@@ -1,0 +1,103 @@
+/*
+ * Rofi Nordic Polar Night Theme
+ * Based on: Aditya Shakya (adi1090x)
+ */
+
+* {
+    background:     #2E3440FF;
+    background-alt: #3B4252FF;
+    foreground:     #D8DEE9FF;
+    selected:       #81A1C1FF;
+    active:         #A3BE8CFF;
+    urgent:         #BF616AFF;
+}
+
+configuration {
+  modi:                       "drun";
+  show-icons:                 true;
+  display-drun:               " ";
+  drun-display-format:        "{icon}  {name}";
+  font:                       "JetBrainsMono Nerd Font 12";
+}
+
+window {
+  transparency:                "real";
+  location:                    center;
+  anchor:                      center;
+  fullscreen:                  false;
+  width:                       900px;
+  border:                      2px solid;
+  border-radius:               16px;
+  border-color:                @selected;
+  background-color:            black / 10%;
+}
+
+mainbox {
+  spacing:                     20px;
+  padding:                     20px;
+  children:                    [ "inputbar", "listview" ];
+}
+
+inputbar {
+  spacing:                     10px;
+  padding:                     15px;
+  border-radius:               10px;
+  background-color:            #434C5EFF;
+  text-color:                  @foreground;
+  children:                    [ "prompt", "entry" ];
+}
+
+prompt, textbox-prompt-colon {
+  background-color:            transparent;
+  text-color:                  inherit;
+}
+
+entry {
+  background-color:            transparent;
+  text-color:                  inherit;
+  placeholder:                 "Search";
+  placeholder-color:           #4C566AFF;
+}
+
+listview {
+    columns:                     1;        // One app per row
+    lines:                       10;       // Show up to 10 rows
+    layout:                      vertical;
+    fixed-columns:               false;
+    spacing:                     5px;
+}
+
+element {
+    padding:                     8px 12px; // Smaller padding
+    orientation:                 horizontal; // icon + text side by side
+    spacing:                     12px;
+    border-radius:               8px;
+}
+
+element-icon {
+    size:                        24px;
+}
+
+element-text {
+    horizontal-align:            0.0; // Align text left of icon
+}
+
+
+element normal.normal {
+  background-color:            transparent;
+}
+
+element selected.normal {
+  background-color:            #434C5EFF;
+  text-color:                  @foreground;
+  border:                      2px solid @selected;
+}
+
+
+error-message {
+  padding:                     15px;
+  border-radius:               10px;
+  border:                      2px solid;
+  background-color:            black / 10%;
+  text-color:                  @foreground;
+}

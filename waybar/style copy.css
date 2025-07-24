@@ -1,0 +1,70 @@
+* {
+  font-family: "JetBrainsMono";
+  font-weight: bold;
+  font-size: 12px;
+  color: #D8DEE9; /* Nord4 */
+  background: transparent;
+  margin: 0;
+  padding: 2px;
+}
+
+#workspaces {
+  background-color: rgba(46, 52, 64, 0.8); /* Nord0 avec transparence */
+  margin-top: 5px;
+  margin-left: 20px;
+  border-radius: 10px;
+}
+
+#workspaces button {
+  background: transparent;
+  color: #D8DEE9; /* Nord4 */
+  padding: 5px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+#workspaces button:first-child {
+  margin-left: 20px;
+}
+
+#workspaces button:last-child {
+  margin-right: 20px;
+}
+
+#workspaces button:hover {
+  background: #3B4245; /* Nord9 */
+  color: #21252b; /* Nord0 */
+}
+
+#clock {
+  color: #88c0d0; /* Nord0 */
+  padding: 5px;
+  border-radius: 5px;
+  animation: pulse 5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #3B4252;
+  }
+  50% {
+    background-color: #3B4252;
+  }
+  100% {
+    background-color: #3B4252;
+  }
+}
+
+#cpu, #memory, #network, #battery {
+  background: #3B4252; /* Nord3 */
+  color: #88c0d0; /* Nord6 */
+  padding: 5px;
+  border-radius: 4rem;
+  margin: 0 1px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#battery {
+  background: #A3BE8C; /* Nord14 */
+  color: #2E3440; /* Nord0 */
+}

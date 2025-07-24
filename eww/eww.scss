@@ -1,0 +1,147 @@
+* {
+  all: unset;
+  font-family: "JetBrainsMono", monospace;
+}
+
+/* === MAIN CONTAINER === */
+.dropdown-overlay {
+  background-color: #2e3440;
+  border-radius: 8px;
+  padding: 1px;
+  border: 2px solid #3b4252;
+}
+
+/* === TOP BAR === */
+.profile-widget {
+  min-width: 100px;
+  border-radius: 15px;
+  border: 10px solid#2e3440;
+  background-color: #3b4252;
+  padding-right: 1em;
+}
+
+/* === PROFILE AVATAR === */
+.avatar-box {
+  margin: 0.5em 0.5em 0.5em 0.5em;
+}
+
+/* === MACHINE INFO === */
+.machine-info {
+  font-size: 15px;
+  font-weight: bold;
+  color: #88C0D0;
+  padding: 20px;
+}
+
+
+/* === POWER BUTTON === */
+.power-controls {
+  background-color: #3b4252;
+  min-width: 60px;
+  border: 10px solid #2e3440;
+  border-radius: 15px;
+}
+
+.power-button {
+  margin: 0.5em 0.5em 0.5em 0.5em;
+  background-color: #3b4252;
+  border: 1px solid #4c566a;
+  border-radius: 8px;
+  padding: 1em;
+  color: #d8dee9;
+  transition: background 0.2s ease;
+}
+
+.power-button:hover {
+  background-color: #5e81ac;
+}
+
+/* === TOGGLE BUTTONS === */
+.toggle-button {
+  background-color: #3b4252;
+  padding: 5px 5px;
+  border-radius: 8px;
+  margin: 0.5em 0.5em 0 0.5em;
+}
+
+.toggle-button:hover {
+  background-color: #5e81ac;
+}
+
+/* === POWER PROFILE === */
+.perf-control {
+  background-color: #3b4252;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  border: 1px solid #4c566a;
+  border-radius: 10px;
+}
+
+.power-mode-btn {
+  background-color: #4c566a;
+  color: #eceff4;
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin: 4px;
+  font-size: 14px;
+}
+
+.power-mode-btn:hover {
+  background-color: #5e81ac;
+}
+
+/* === GROUP BAR === */
+.group-bar {
+  // background-color: black;
+  border-radius: 12px;
+  padding: 0 5px 5px 5px;
+}
+
+/* === INNER BOXES (left & right columns) === */
+.group-column {
+  background-color: #3b4252;
+  border-radius: 8px;
+  // border: 5px solid black;
+  padding: 8px;
+  margin: 6px;
+}
+
+/* === BUTTON STYLES === */
+.group-button {
+  background-color: #4c566a;
+  color: #eceff4;
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin: 4px;
+  font-size: 14px;
+}
+
+.group-button:hover {
+  background-color: #5e81ac;
+}
+
+/* === Storage & GPU === */
+
+.recording {
+  background-color: #da0000;
+  color: #eceff4;
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin: 4px;
+  font-size: 14px;
+}
+
+.night_mode {
+  background-color: #81a1c1;
+  color: #eceff4;
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin: 4px;
+  font-size: 14px;
+}
+
+
+.group-text {
+  font-size: medium;
+  font-weight: bolder;
+  color: #81a1c1;
+}

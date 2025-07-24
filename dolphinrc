@@ -1,0 +1,27 @@
+MenuBar=Disabled
+
+[CompactMode]
+MaximumTextWidthIndex=2
+UseSystemFont=false
+ViewFont=JetBrains Mono,9,-1,5,600,0,0,0,0,0,0,0,0,0,0,1,SemiBold
+
+[DetailsMode]
+UseSystemFont=false
+ViewFont=JetBrains Mono,9,-1,5,600,0,0,0,0,0,0,0,0,0,0,1,SemiBold
+
+[General]
+Version=202
+ViewPropsTimestamp=2025,7,19,2,12,54.173
+
+[KFileDialog Settings]
+Places Icons Auto-resize=false
+Places Icons Static Size=22
+
+[UiSettings]
+ColorScheme=Nordic
+
+[MainWindow]
+MenuBar=Disabled
+
+[PreviewSettings]
+Plugins=appimagethumbnail,audiothumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,svgthumbnail,gdk-pixbuf-thumbnailer
